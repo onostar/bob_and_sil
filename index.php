@@ -455,7 +455,7 @@
             <p class="first_p">Discover a few of our most successful projects</p>
             <div class="plans">
                 <?php 
-                    $get_projects = $connectdb->prepare("SELECT * FROM projects ORDER BY post_date LIMIT 4");
+                    $get_projects = $connectdb->prepare("SELECT * FROM projects ORDER BY post_date LIMIT 7");
                     $get_projects->execute();
                     $projects = $get_projects->fetchAll();
                     foreach($projects as $project):

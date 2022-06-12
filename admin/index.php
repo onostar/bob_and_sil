@@ -80,7 +80,7 @@
 
                 </div>
                 <div class="adds">
-                    <img src="../images/online_banking2.jpg" alt="background">
+                    <img src="../images/home.jpg" alt="background">
                 </div>
             </section>
     </main>

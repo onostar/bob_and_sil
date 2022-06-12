@@ -441,50 +441,50 @@ $(document).ready(function(){
     });
 });
 
-//display change price form
-function displayPriceForm(form){
-    document.querySelectorAll(".priceForm").forEach(forms=>{
-        forms.style.display = "none";
-    })
-    document.querySelector(`#${form}`).style.display = "block";
+// //display change price form
+// function displayPriceForm(form){
+//     document.querySelectorAll(".priceForm").forEach(forms=>{
+//         forms.style.display = "none";
+//     })
+//     document.querySelector(`#${form}`).style.display = "block";
 
-}
-//display price to change for individual item
-document.addEventListener("DOMContentLoaded",function(){
-    let prices = document.querySelectorAll(".each_prices");
-    prices.forEach(price =>{
-        price.onclick = function(){
-            displayPriceForm(this.dataset.form);
-            // console.log(this.dataset.form);
-        }
-    })
-})
-//close price form
-$(document).ready(function(){
-    $(".closeForm").click(function(){
-        $(".priceForm").hide();
-    })
-})
-/* change price without refresh */
-$(document).ready(function(){
-    $("#changePrize").click(function(){
-        let item_prize = document.getElementById('item_prize').value;
+// }
+// //display price to change for individual item
+// document.addEventListener("DOMContentLoaded",function(){
+//     let prices = document.querySelectorAll(".each_prices");
+//     prices.forEach(price =>{
+//         price.onclick = function(){
+//             displayPriceForm(this.dataset.form);
+//             // console.log(this.dataset.form);
+//         }
+//     })
+// })
+// //close price form
+// $(document).ready(function(){
+//     $(".closeForm").click(function(){
+//         $(".priceForm").hide();
+//     })
+// })
+// /* change price without refresh */
+// $(document).ready(function(){
+//     $("#changePrize").click(function(){
+//         let item_prize = document.getElementById('item_prize').value;
         
-        let item_id = document.getElementById('item_id').value;
-        // alert(item_prize);
-        $.ajax({
-            type: "POST",
-            url: "../controller/update_rate.php",
-            data: {item_prize:item_prize, item_id:item_id},
-            success: function(response){
-                $(".each_prices").val(response);
-                $(".priceForm").hide();
-            }
-        })
-    return false;
-    })
+//         let item_id = document.getElementById('item_id').value;
+//         // alert(item_prize);
+//         $.ajax({
+//             type: "POST",
+//             url: "../controller/update_rate.php",
+//             data: {item_prize:item_prize, item_id:item_id},
+//             success: function(response){
+//                 $(".each_prices").val(response);
+//                 $(".priceForm").hide();
+//             }
+//         })
+//     return false;
+//     })
     
-})
+// })
 
 /* toggle notification messages */
 function showNot(note){
@@ -525,15 +525,32 @@ function deletePhoto(photo){
 }
 
 /* view notification */
-function viewMessage(not_id){
+/* function viewMessage(not_id){
     window.open("notifications.php?message="+not_id, "_blank");
     return;
-}
-function updateScroll() {
+} */
+/* update chat scroll bar */
+/* function updateScroll() {
     let element = document.querySelector(".all_chat");
     let elementHeight = element.scrollHeight;
     element.scrollTop = elementHeight
 }
 window.onload = updateScroll;
-
+ */
+/* automatic scroll bar for projects */
+$(document).ready(function() {
+  
+    let scrollHandler = null;
+    
+    function autoScroll () {
+    //   console.log("autoScroll");
+      clearInterval(scrollHandler);
+      scrollHandler = setInterval(function() {
+        let nextScroll = $('#plans .plans').scrollLeft() + 20;
+        $('#plans .plans').scrollLeft(nextScroll);
+      },500);
+    }
+     
+     autoScroll();
+  });
 

@@ -1954,16 +1954,22 @@ covid section
 #plans .plans{
     display:flex;
     justify-content: center;
-    flex-wrap:wrap;
+    flex-wrap:nowrap;
     /* align-items: center; */
     width:100%;
-    /* overflow-x: scroll; */
+    overflow-x: auto;
     gap:.2rem;
     padding:10px;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+}
+#plans .plans::-webkit-scrollbar{
+    display:none;
 }
 
 .plan_form{
-    width:24%;
+    flex:0 0 auto;
+    width:25%;
     height:300px;
     background:#fff;
     box-shadow:2px 2px 2px #c4c4c4;
@@ -3224,6 +3230,11 @@ color: rgb(231, 226, 226);
 .adds{
     background:var(--primaryColor);
     width:65%;
+}
+.adds img{
+    width:100%;
+    height:100%;
+    object-fit: cover;
 }
 #reg_form{
     width:55%;
