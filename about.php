@@ -254,6 +254,12 @@
                     </figcaption>
                 </figure>
                 <figure>
+                    <img src="images/md.jpg" alt="management photo">
+                    <figcaption>
+                        <h3>Akuyoma Silver Silifatu<span>Managing Director</span></h3>
+                    </figcaption>
+                </figure>
+                <figure>
                     <img src="images/" alt="management photo">
                     <figcaption>
                         <h3><span>General Manager</span></h3>
