@@ -432,9 +432,9 @@
                     </figcaption>
                 </figure>
                 <figure>
-                    <img src="images/" alt="management photo">
+                    <img src="images/general_manager.jpg" alt="management photo">
                     <figcaption>
-                        <h3><span>Admin/HRM</span></h3>
+                        <h3>Saniyo Eyitemi Endurance<span>General Manager</span></h3>
                     </figcaption>
                 </figure>
                 <figure>

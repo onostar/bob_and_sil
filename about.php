@@ -260,15 +260,15 @@
                     </figcaption>
                 </figure>
                 <figure>
-                    <img src="images/" alt="management photo">
+                    <img src="images/general_manager.jpg" alt="management photo">
                     <figcaption>
-                        <h3><span>General Manager</span></h3>
+                        <h3>Saniyo Eyitemi Endurance<span>General Manager</span></h3>
                     </figcaption>
                 </figure>
                 <figure>
-                    <img src="images/" alt="management photo">
+                    <img src="images/hrm.jpg" alt="management photo">
                     <figcaption>
-                        <h3><span>Admin/HRM</span></h3>
+                        <h3>Itsekure Godfrey<span>Admin/HRM</span></h3>
                     </figcaption>
                 </figure>
                 <figure>
@@ -278,9 +278,9 @@
                     </figcaption>
                 </figure>
                 <figure>
-                    <img src="images/" alt="management photo">
+                    <img src="images/safety.jpg" alt="management photo">
                     <figcaption>
-                        <h3><span>Safety Manager</span></h3>
+                        <h3>Eruterio Aghogho Happy<span>Safety Manager</span></h3>
                     </figcaption>
                 </figure>
                 <figure>
