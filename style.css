@@ -1959,13 +1959,14 @@ covid section
     width:100%;
     overflow-x: auto;
     gap:.2rem;
+    white-space: nowrap;
     padding:10px;
     scrollbar-width: none;
     scroll-behavior: smooth;
 }
-#plans .plans::-webkit-scrollbar{
+/* #plans .plans::-webkit-scrollbar{
     display:none;
-}
+} */
 
 .plan_form{
     flex:0 0 auto;
