@@ -820,6 +820,35 @@ main{
     color:#fff;
     padding:5px 0;
 } */
+/* trendings */
+#trending{
+    /* width:80%; */
+    margin:0 auto;
+    /* box-shadow: 2px 2px 2px var(--primaryColor); */
+    display:flex;
+    gap:.5rem;
+    background:var(--secondaryColor);
+    color:#fff;
+    align-items: center;
+}
+#trending h4{
+    background:#fff;
+    padding:10px;
+    color:red;
+    box-shadow: 1px solid silver;
+}
+#trending h4 a{
+    color:red; 
+}
+/* #trending .trendings{
+    width:90%;
+} */
+#trending .trendings a{
+    margin:0 10px;
+    color:#fff;
+    /* border-left:1px solid #fff; */
+    padding-left:2px;
+}
 /* summary services section */
 #service_summary{
     display:flex;
@@ -2237,7 +2266,8 @@ covid section
     width:50px;
     height:4px;
     margin:10px auto;
-    background:rgb(64, 160, 224);
+    background:var(--moreColor);
+    color: var(--moreColor);
 }
 #testimonies .box{
     width:50%;
@@ -2367,6 +2397,7 @@ covid section
 }
 .trends .topics article .summary h3{
     text-align:left;
+    color:var(--moreColor);
 }
 .trends .topics article .summary p{
     text-align:justify;
@@ -2374,6 +2405,31 @@ covid section
 }
 .trends .topics article .summary p span{
     color:var(--secondaryColor);
+}
+.more{
+    text-align:center;
+    display:block;
+    margin:40px;
+} 
+.more a{
+    background: var(--primaryColor);
+    color:#fff;
+    transition:.3s all ease-in;
+    padding:15px;
+    margin:20px;
+}
+.more a:hover, .more a:focus{
+    transform: scale(1.02);
+    
+
+}
+.article_details{
+    width:70%;
+    margin:50px auto;
+    padding:20px;
+    text-align: justify;
+    background:#fff;
+    box-shadow: 2px 2px 2px var(--otherColor);
 }
 /* footer */
 footer{
@@ -3322,7 +3378,7 @@ color: rgb(231, 226, 226);
 /* admin and user portals */
 header{
     width:100%;
-    background:#fff;
+    background:rgb(250, 247, 247);
     position: sticky;
     top:0;
     left:0;
@@ -4552,7 +4608,8 @@ header i{
 .uploaded{
     display:flex;
     align-items: center;
-    gap:1rem;
+    flex-wrap: wrap;
+    gap:.5rem;
     justify-content: space-between;
     margin:40px 10px;
 }

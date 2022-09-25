@@ -53,7 +53,7 @@
                 </li>
                 <li><a href="javascript:void(0)"><i class="far fa-envelope"></i> info@bobsilglobal.com</a></li>
                
-                <li><a href="javascript:void(0);">News Updates</a></li>
+                <li><a href="events_news.php">News Updates</a></li>
             </ul>
         </div>
     </section>
@@ -154,6 +154,28 @@
         <!-- <div class="client_assess">
             <a href="#reqMaster">Client Assessment Form</a><i class="fas fa-plus"></i>
         </div> -->
+    </section>
+    <!-- news updates -->
+    <section id="trending">
+        <h4><a href="events_news.php"><i class="fas fa-newspaper"></i> Updates</a></h4>
+        <div class="trendings">
+            <marquee behavior="" direction="">
+                <?php
+                    $get_trends = $connectdb->prepare("SELECT * FROM news_events ORDER BY post_date DESC LIMIT 6");
+                    $get_trends->execute();
+                    if($get_trends->rowCount() > 0){
+                        $trends = $get_trends->fetchAll();
+                        foreach($trends as $trend):
+                ?>
+                        <a href="javascript:void(0)" onclick="viewArticle('<?php echo $trend->article_id?>')"><i class="fas fa-angle-double-right"></i> <?php echo $trend->title?></a>
+                <?php endforeach;
+                    }else{
+                        echo "<p>No updates available</p>";
+                    }
+                ?>
+            </marquee>
+            
+        </div>
     </section>
     <!-- summary of services -->
     <section id="service_summary">
@@ -431,10 +453,16 @@
                         <h3>Akuyoma Silver Silifatu<span>Managing Director</span></h3>
                     </figcaption>
                 </figure>
-                <figure>
+                <!-- <figure>
                     <img src="images/general_manager.jpg" alt="management photo">
                     <figcaption>
                         <h3>Saniyo Eyitemi Endurance<span>General Manager</span></h3>
+                    </figcaption>
+                </figure> -->
+                <figure>
+                    <img src="images/hrm.jpg" alt="management photo">
+                    <figcaption>
+                        <h3>Itsekure Godfrey<span>Admin/HRM</span></h3>
                     </figcaption>
                 </figure>
                 <figure>
@@ -628,30 +656,38 @@
         
         
         <!-- news and articles -->
-        <!-- <section class="trends">
-            <h2>Our Latest Stories</h2>
+        <section class="trends">
+            
+            <h2>Our Latest Events and updates</h2>
             <hr>
             <div class="topics">
+                <?php
+                    $get_news = $connectdb->prepare("SELECT SUBSTRING_INDEX(details, ' ', 40) AS details, title, article_id, photo, post_date FROM news_events ORDER BY post_date DESC LIMIT 2");
+                    $get_news->execute();
+                    if($get_news->rowCount() > 0){
+                        $rows = $get_news->fetchAll();
+                        foreach($rows as $row){
+                ?>
                 <article>
-                    <a href="javascript:void(0)">
-                        <img src="images/bob-oil-gas.jpg" alt="blog">
+                    <a href="javascript:void(0)" onclick="viewArticle('<?php echo $row->article_id?>')">
+                        <img src="<?php echo 'media/'.$row->photo?>" alt="blog">
                         <div class="summary">
-                            <h3>Helping companies in their green transition</h3>
-                            <p>Bob and SIl has received inquiries seeking clarifications of job offers</p> <span>Read more...</span></p>
+                            <h3><?php echo $row->title;?></h3>
+                            <p><?php echo $row->details?></p> <span>Read more...</span></p>
                         </div>
                     </a>
                 </article>
-                <article>
-                    <a href="javascript:void(0)">
-                        <img src="images/project_4.jpg" alt="blogs">
-                        <div class="summary">
-                            <h3>Wind of change in the power industry</h3>
-                            <p>Bob and sil has been fully involved in the development of power from renewable energy world wide through power investments <span>Read more...</span></p>
-                        </div>
-                    </a>
-                </article>
+                <?php
+                    }
+                }else{
+                    echo "<h3>No recent update</h3>";
+                }
+            ?>
             </div>
-        </section> -->
+                <div class="more">
+                    <a href="events_news.php">View more <i class="fas fa-paper-plane"></i></a>
+                </div>
+        </section>
         
     </main>
     <!--Partners -->
@@ -754,7 +790,7 @@
             </section>
         </section>
         <section class="secondaryFooter">
-            <p>&copy;2022 Bob & Sil Global. All Rights Reserved.</p>
+            <p>&copy;<?php echo date("Y")?> Bob & Sil Global. All Rights Reserved.</p>
         </section>
     </footer>
 <!-- </div> -->

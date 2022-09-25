@@ -259,54 +259,12 @@ function showUser(user_id){
     window.open("admin.php?user="+user_id, "_parent");
     return;
 }
-/* search users */
-$(document).ready(function(){
-    let $row = $('#user_table tbody tr');
-    $('#searchUsers').keyup(function() {
-        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
+/* view articles / news */
+function viewArticle(article){
+    window.open("article.php?article="+article, "_parent");
+    return;
+}
 
-        $row.show().filter(function() {
-            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-            return !~text.indexOf(val);
-        }).hide();
-    });
-})
-/* search currencies */
-$(document).ready(function(){
-    let $row = $('#cur_table tbody tr');
-    $('#searchCurrency').keyup(function() {
-        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-        $row.show().filter(function() {
-            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-            return !~text.indexOf(val);
-        }).hide();
-    });
-})
-/* search deposit to approve */
-$(document).ready(function(){
-    let $row = $('#app_table tbody tr');
-    $('#searchApp').keyup(function() {
-        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-        $row.show().filter(function() {
-            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-            return !~text.indexOf(val);
-        }).hide();
-    });
-})
-/* search deposit list */
-$(document).ready(function(){
-    let $row = $('#dep_table tbody tr');
-    $('#searchDep').keyup(function() {
-        let val = $.trim($(this).val()).replace(/ +/g, ' ').toLowerCase();
-
-        $row.show().filter(function() {
-            var text = $(this).text().replace(/\s+/g, ' ').toLowerCase();
-            return !~text.indexOf(val);
-        }).hide();
-    });
-})
 /* play beep sound */
 function playBeep(){
     let sound = new Audio('beep-07a.wav');
@@ -514,6 +472,13 @@ function deleteProject(project){
     let delProject = confirm("Do you want to delete this project?", "");
     if(delProject){
         window.open("../controller/delete_project.php?project="+project, "_parent");
+    }
+}
+/* delete news updates */
+function deleteArticle(news){
+    let delNews = confirm("Do you want to delete this post?", "");
+    if(delNews){
+        window.open("../controller/delete_article.php?news="+news, "_parent");
     }
 }
 /* delete photo */

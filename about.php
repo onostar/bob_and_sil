@@ -48,7 +48,7 @@
                     </li>
                     <li><a href="javascript:void(0)"><i class="far fa-envelope"></i> info@bobsilglobal.com</a></li>
                    
-                    <li><a href="javascript:void(0);">News Updates</a></li>
+                    <li><a href="events_news.php">News Updates</a></li>
                 </ul>
             </div>
         </section>
@@ -259,12 +259,12 @@
                         <h3>Akuyoma Silver Silifatu<span>Managing Director</span></h3>
                     </figcaption>
                 </figure>
-                <figure>
+                <!-- <figure>
                     <img src="images/general_manager.jpg" alt="management photo">
                     <figcaption>
                         <h3>Saniyo Eyitemi Endurance<span>General Manager</span></h3>
                     </figcaption>
-                </figure>
+                </figure> -->
                 <figure>
                     <img src="images/hrm.jpg" alt="management photo">
                     <figcaption>
@@ -371,7 +371,7 @@
             </section>
         </section>
         <section class="secondaryFooter">
-            <p>&copy;2022 Bob & Sil Global. All Rights Reserved.</p>
+            <p>&copy;<?php echo date("Y")?> Bob & Sil Global. All Rights Reserved.</p>
         </section>
     </footer>
 <!-- </div> -->

@@ -51,7 +51,7 @@
                     </li>
                     <li><a href="javascript:void(0)"><i class="far fa-envelope"></i> info@bobsilglobal.com</a></li>
                    
-                    <li><a href="javascript:void(0);">News Updates</a></li>
+                    <li><a href="events_news.php">News Updates</a></li>
                 </ul>
             </div>
         </section>
@@ -217,7 +217,7 @@
             </section>
         </section>
         <section class="secondaryFooter">
-            <p>&copy;2022 Bob & Sil Global. All Rights Reserved.</p>
+            <p>&copy;<?php echo date("Y")?> Bob & Sil Global. All Rights Reserved.</p>
         </section>
     </footer>
 <!-- </div> -->

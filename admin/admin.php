@@ -94,8 +94,9 @@
                 <nav>
                     <h3><a href="admin.php" title="Home"><i class="fas fa-home"></i> Dashboard</a></h3>
                     <ul>        
-                    <li><a href="javascript:void(0);" id="event" class="page_navs" data-page="events_news"><i class="fas fa-calendar"></i> Projects</a></li>
+                        <li><a href="javascript:void(0);" id="event" class="page_navs" data-page="projects"><i class="fas fa-helmet-safety"></i> Projects</a></li>
                         <li><a href="javascript:void(0);" id="galleryBtn" class="page_navs" data-page="gallery"><i class="fas fa-photo-video"></i> Gallery</a></li>
+                        <li><a href="javascript:void(0);" id="event" class="page_navs" data-page="events_news"><i class="fas fa-newspaper"></i> Events & News</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -112,8 +113,9 @@
                 <nav>
                     <h3><a href="admin.php" title="Home"><i class="fas fa-home"></i> Dashboard</a></h3>
                     <ul>        
-                        <li><a href="javascript:void(0);" id="event" class="page_navs" data-page="events_news"><i class="fas fa-calendar"></i> Projects</a></li>
+                        <li><a href="javascript:void(0);" id="event" class="page_navs" data-page="projects"><i class="fas fa-helmet-safety"></i> Projects</a></li>
                         <li><a href="javascript:void(0);" id="galleryBtn" class="page_navs" data-page="gallery"><i class="fas fa-photo-video"></i> Gallery</a></li>
+                        <li><a href="javascript:void(0);" id="event" class="page_navs" data-page="events_news"><i class="fas fa-newspaper"></i> Events & News</a></li>
                     </ul>
                 </nav>
             </aside>
@@ -142,7 +144,7 @@
                 <div id="dashboard">
                     
                     <div class="cards" id="card4">
-                        <a href="javascript:void(0)" data-page="events_news" class="page_navs">
+                        <a href="javascript:void(0)" data-page="projects" class="page_navs">
                             <p>Projects Compeleted</p>
                             <div class="infos">
                                 <i class="fas fa-helmet-safety"></i>
@@ -174,32 +176,47 @@
                             </div>
                         </a>
                     </div> 
+                    <div class="cards" id="card3">
+                        <a href="javascript:void(0)" data-page="events_news" class="page_navs">
+                            <p>News and updates</p>
+                            <div class="infos">
+                                <i class="fas fa-newspaper"></i>
+                                <p>
+                                    <?php
+                                        $get_gallery = $connectdb->prepare("SELECT * FROM news_events");
+                                        $get_gallery->execute();
+                                        echo $get_gallery->rowCount();
+                                    ?>
+                                </p>
+                            </div>
+                        </a>
+                    </div> 
                     
                    
                 </div>
-                <!-- events and news -->
-                <div id="events_news"class="displays">
+                <!-- projects -->
+                <div id="projects"class="displays">
                     <div class="info"></div>
                     <div class="add_user_form" id="brd_mess">
                         <h3>Post projects</h3>
-                        <form method="POST" action="../controller/post_news.php" enctype="multipart/form-data">
+                        <form method="POST" action="../controller/post_projects.php" enctype="multipart/form-data">
                             <div class="inputs">
                                 <div class="data">
                                     <label for="subject">Title</label><br>
                                     <input type="text" name="title" id="title" placeholder="Event/news title" required>
                                 </div>
                                 <div class="data">
-                                    <label for="event_-img">Upload Cover image</label>
+                                    <label for="event_-img">Upload Cover image (not more than 300kb)</label>
                                     <input type="file" name="photo" id="photo">
                                 </div>
                             </div>
-                            <div class="inputs">
+                            <!-- <div class="inputs">
                                 <div class="data" style="width:100%;">
                                     <label for="broadcast_message">Description</label><br>
                                     <textarea name="details" id="details" cols="50" rows="5"></textarea>
                                 </div>
-                            </div>
-                            <button type="submit" id="post_event" name="post_event">Post <i class="fas fa-paper-plane"></i></button>
+                            </div> -->
+                            <button type="submit" id="post_event" name="post_project">Post <i class="fas fa-paper-plane"></i></button>
                         </form>
                     </div>
                     <!-- uploaded projects -->
@@ -236,7 +253,7 @@
                                     <input type="text" name="title" id="title" placeholder="Event/news title" required>
                                 </div>
                                 <div class="data">
-                                    <label for="event_-img">Upload image</label>
+                                    <label for="event_-img">Upload image (not more than 300kb)</label>
                                     <input type="file" name="photo" id="photo">
                                 </div>
                             </div>
@@ -265,6 +282,54 @@
                     </div>
                 </div>
                 
+                <!-- post news and updates -->
+                <div id="events_news"class="displays">
+                    <div class="info"></div>
+                    <div class="add_user_form" id="brd_mess">
+                        <h3>Post events/news</h3>
+                        <form method="POST" action="../controller/post_news.php" enctype="multipart/form-data">
+                            <div class="inputs">
+                                <div class="data">
+                                    <label for="subject">Title</label><br>
+                                    <input type="text" name="title" id="title" placeholder="Event/news title" required>
+                                </div>
+                                <div class="data">
+                                    <label for="event_img">Upload Cover image (not more than 300kb)</label>
+                                    <input type="file" name="photo" id="photo">
+                                </div>
+                                
+                            </div>
+                            <div class="inputs">
+                                <div class="data" style="width:100%; margin-top:0px;">
+                                    <label for="broadcast_message">Details</label><br>
+                                    <textarea name="details" id="details" cols="40" rows="5"></textarea>
+                                </div>
+                            </div>
+                            <button type="submit" id="post_event" name="post_event">Post <i class="fas fa-paper-plane"></i></button>
+                        </form>
+                    </div>
+                    <!-- uploaded events and news -->
+                    <div class="uploaded">
+                        <?php
+                            $get_images = $connectdb->prepare("SELECT * FROM news_events ORDER BY post_date DESC");
+                            $get_images->execute();
+                            $photos = $get_images->fetchAll();
+                            foreach($photos as $photo):
+                        ?>
+                        <figure>
+                            <div class="photo">
+                                <img src="<?php echo '../media/'.$photo->photo?>" alt="event">
+
+                            </div>
+                            <figcaption>
+                                <h4><?php echo $photo->title?></h4>
+                                <!-- <p><?php echo $photo->details?></p> -->
+                                <a href="javascript:void(0)" title="Delete Event" onclick="deleteArticle('<?php echo $photo->article_id?>')"><i class="fas fa-trash"></i></a>
+                            </figcaption>
+                        </figure>
+                        <?php endforeach?>
+                    </div>
+                </div>
             </section>
 
         </div>

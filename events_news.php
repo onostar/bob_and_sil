@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    include "controller/connections.php";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,7 +18,7 @@
     <meta name="og:image" property="og:image" itemprop="image" content="images/bobsil_logo.png">
     <meta property="og:image:width" content="300" />
     <meta property="og:image:height" content="300" />
-    <title>Bob and sil Global | Marine Logisitics</title>
+    <title>Bob & sil Global | News updates</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/all.css">
     <link rel="stylesheet" href="fontawesome-free-6.0.0-web/css/all.min.css">
@@ -88,10 +92,10 @@
             <div class="about_banner">
                 <div class="slide">
                     <div class="banner_img">
-                        <img src="images/vessel2.JPG" alt="bob and sil">
+                        <img src="images/project1.JPG" alt="about us">
                     </div>
                     <div class="taglines">
-                        <h2>Marine Logistics</h2>
+                        <h2>News Updates</h2>
                         <!-- <p>We bring exceptional care close to you. Consult a Doctor any time, any day.</p> -->
                         <!-- <div class="btns">
                             <a href="javascrip:void(0);" class="showRequest">Schedule an Appointment Now</a>
@@ -106,48 +110,31 @@
             <a href="#reqMaster">Client Assessment Form</a><i class="fas fa-plus"></i>
         </div> -->
     </section>
-    <main>
-        <section id="existence">
-            <h2>Marine logistics & repairs</h2>
+    <section class="trends">
+            <h2>Recent Events and News updates</h2>
             <hr>
-            <div class="story">
-                <p id="first_story">At <strong>Bob &Sil</strong>, we provide ancillary marine logistics services used in the oil and gas industry. We offer high-quality logistics services and ensure the efficient &; seamless transportation of these products within the Sea ports.<br><br>>Over the years, we have assisted companies in the transportation of petroleum products within Nigerian waters.<br>We see this as an evolving market in which we are and will continue to give our best service to our customers and make sure they have their supplies in shortest time with the highest quality.<br><br>Our vast experience and network in the maritime industry enables us to offer high-quality logistics services and ensures the efficient &amp; seamless transportation of these products within the Sea ports.<br><br>>We have established an outstanding regional and national reputation for excellence in logistics support in the maritime sector.<br>
-                    <a id="invest_link" href="contact.html" title="contact us">Get a quote <i class="fas fa-receipt"></i></a>
-                    <img src="images/vessel4.jpg" alt="Admin building">
-                </p>
-                <div class="more_notes">
-                    <img src="images/banner2.jpg" alt="bob and sil about">
-
-                </div>
+            <div class="topics">
+                <?php
+                    $get_events = $connectdb->prepare("SELECT SUBSTRING_INDEX(details, ' ', 30) AS details, article_id, title, photo FROM news_events ORDER BY post_date DESC");
+                    $get_events->execute();
+                    $views = $get_events->fetchAll();
+                    foreach($views as $view):
+                ?>
+                <article class="articles">
+                    <a href="javascript:void(0)" onclick="viewArticle('<?php echo $view->article_id?>')">
+                        <img src="<?php echo 'media/'.$view->photo?>" alt="article">
+                        <div class="summary">
+                            <h3><?php echo $view->title?></h3>
+                            <p><?php echo $view->details?> <span>Read more...</span></p>
+                        </div>
+                    </a>
+                </article>
+                <?php endforeach?>
             </div>
+            
         </section>
-        <!-- <section id="hero">
-            <div class="hero_image">
-                <img src="images/vessel4.jpg" alt="hero image">
-            </div>
-            <div class="hero_notes">
-                <div class="note">
-                    <h3></h3>
-                    <p>Current clients</p>
-                </div>
-                <div class="note">
-                    <h3></h3>
-                    <p>Projects completed</p>
-                </div>
-                <div class="note">
-                    <h3>100+</h3>
-                    <p>Staff strength</p>
-                </div>
-                <div class="note">
-                    <h3>10</h3>
-                    <p>Years of Experience</p>
-                </div>
-            </div>
-        </section> -->
-        
-        
-    </main>
-    <footer>
+    
+        <footer>
         <section class="mainFooter">
             <section class="mainFooter1">
                 <div class="contactAddress">
@@ -235,10 +222,11 @@
     </div> -->
     
     <div class="toTop">
-        <a href="#topHeader"><i class="fas fa-chevron-up" style="color:#fff;" size="10"></i></a>
+        <a href="#aboutBanner"><i class="fas fa-chevron-up" style="color:#fff;" size="10"></i></a>
     </div>
-    
-    <script src="jquery.js"></script>
-    <script src="script.js"></script>
+
+
+        <script src="script.js"></script>
+        <script src="jquery.js"></script>
 </body>
 </html>

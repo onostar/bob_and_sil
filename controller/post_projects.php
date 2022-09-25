@@ -4,7 +4,7 @@
     $_SESSION['success'] = "";
     $_SESSION['error'] = "";
 
-    if(isset($_POST['post_event'])){
+    if(isset($_POST['post_project'])){
         $subject = ucwords(htmlspecialchars(stripslashes($_POST['title'])));
         $message = ucwords(htmlspecialchars(stripslashes($_POST['details'])));
         
@@ -12,7 +12,8 @@
         $photo_folder = "../media/".$photo;
         $photo_size = $_FILES['photo']['size'];
 
-        $check_status = $connectdb->prepare("SELECT * FROM news_events WHERE title = :title");
+        
+        $check_status = $connectdb->prepare("SELECT * FROM projects WHERE title = :title");
         $check_status->bindvalue("title", $subject);
         $check_status->execute();
 
@@ -25,7 +26,7 @@
                 header("Location: ../admin/admin.php");
             }else{
                 if(move_uploaded_file($_FILES['photo']['tmp_name'], $photo_folder)){
-                    $insert_news = $connectdb->prepare("INSERT INTO news_events (title, details, photo) VALUES(:title, :details, :photo)");
+                    $insert_news = $connectdb->prepare("INSERT INTO projects (title, details, photo) VALUES(:title, :details, :photo)");
                     $insert_news->bindvalue("title", $subject);
                     $insert_news->bindvalue("details", $message);
                     $insert_news->bindvalue("photo", $photo);
