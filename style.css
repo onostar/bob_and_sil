@@ -5147,6 +5147,12 @@ header i{
         top:60%;
         width:90%;
     }
+    .articleBanner{
+        height:65vh!important;
+    }
+    .article_details{
+        width:90%;
+    }
     .about_banner .slide .taglines h2{
         text-align:center;
     }

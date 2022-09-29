@@ -63,7 +63,7 @@
                 </ul>
             </div>
         </section>
-    <section id="aboutBanner">
+    <section id="aboutBanner" class="articleBanner">
         <header id="mainHeader" class="main_header">
             <h1>
                 <a href="index.php">
@@ -97,12 +97,12 @@
             <div class="menu-icon" onclick="displayMenu()"><a href="javascript:void(0);"><i class="fas fa-bars"></i></a></div>
         </header>
         <div id="slider">
-            <div class="about_banner">
+            <div class="about_banner" id="articles">
                 <div class="slide">
                     <div class="banner_img">
                         <img src="<?php 
                             if($new->photo == ''){
-                                echo 'images/head_office2.JPG';
+                                echo 'images/head_office2.jpg';
                             }else{
                                 echo 'media/'.$new->photo;
                             }

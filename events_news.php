@@ -92,7 +92,7 @@
             <div class="about_banner">
                 <div class="slide">
                     <div class="banner_img">
-                        <img src="images/project1.JPG" alt="about us">
+                        <img src="images/project1.jpg" alt="about us">
                     </div>
                     <div class="taglines">
                         <h2>News Updates</h2>
